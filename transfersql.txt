@@ -1,0 +1,16 @@
+connect atm_admin/atm_admin
+
+
+create table transfer (
+from_card varchar2(10) not null,
+to_card varchar2(10) not null,
+amount number(38) not null,
+transfer_date date not null,
+transfer_time varchar2(12) not null,
+balance number(38) not null
+);
+
+
+insert into transfer values('100000','120000',500,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'));
+insert into transfer values('110000','120000',10,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'));
+insert into transfer values('100000','110000',500,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'));
