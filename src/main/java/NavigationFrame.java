@@ -79,6 +79,7 @@ public class NavigationFrame extends JFrame {
         welcomeLabel.setForeground(Color.orange);
         welcomeLabel.setOpaque(true);
         welcomeLabel.setBackground(Color.black);
+        
         withdrawBtn=createSimpleButton("WITHDRAW");
         withdrawBtn.setBounds(140, 300, 120, 30);
         transferBtn=createSimpleButton("TRANSFER");
