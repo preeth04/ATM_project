@@ -1,5 +1,18 @@
 connect atm_admin/atm_admin
 
+create table atm(
+card_no varchar2(10) primary key,
+holder_name varchar2(20) not null,
+pin number(5) not null,
+balance number(38) not null
+);
+
+insert into atm values(100000,'Shankar',1000,56399);
+insert into atm values(110000,'Preeth',1234,2500);
+insert into atm values(120000,'Kumar',1111,20199);
+insert into atm values(130000,'Jacob',0000,10999);
+insert into atm values(140000,'Feloix',2222,6500);
+insert into atm values(150000,'Stark',6789,78025);
 
 create table transfer (
 from_card varchar2(10) not null,
@@ -11,6 +24,6 @@ balance number(38) not null
 );
 
 
-insert into transfer values('100000','120000',500,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'));
-insert into transfer values('110000','120000',10,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'));
-insert into transfer values('100000','110000',500,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'));
+insert into transfer values('100000','120000',500,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'),56899);
+insert into transfer values('110000','120000',10,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'),2500);
+insert into transfer values('100000','110000',500,to_date(sysdate,'dd-mm-yyy'),to_char(sysdate,'hh24:mi:ss'),56399);

@@ -173,10 +173,13 @@ public class LoginFrame extends JFrame {
 
             //step2 create  the connection object  
             con = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521:xe", "atm_admin", "atm_admin");
+                    "jdbc:oracle:thin:@localhost:1521:orcl", "c##atm_admin", "atm_admin");
 
             //step3 create the statement object  
             Statement stmt = con.createStatement();
+            System.out.println("Autocommit: before "+con.getAutoCommit());
+            con.setAutoCommit (false); 
+            System.out.println("Autocommit: after "+con.getAutoCommit());
 
             //step4 execute query  
             ResultSet rs = stmt.executeQuery("select card_no,pin from atm");

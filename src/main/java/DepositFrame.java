@@ -93,7 +93,7 @@ public class DepositFrame extends JFrame {
   button.setBorder(compound);
   return button;
 }
-    void depositSQL(int amount) {
+    boolean depositSQL(int amount) {
 
         try {
 
@@ -107,11 +107,14 @@ public class DepositFrame extends JFrame {
                 amountDb = amountDb + amount;
                 stmt.executeUpdate("Update atm set balance =" + amountDb + "where card_no = " + card_no);
                 con.commit();
+                return true;
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
+        	e.printStackTrace();
         }
+        return false;
 
     }
 
@@ -135,11 +138,15 @@ public class DepositFrame extends JFrame {
                             JOptionPane.QUESTION_MESSAGE);
                     if (result == JOptionPane.YES_OPTION) {
                         label.setText("You selected: Yes");
-                        depositSQL(amt);
-                        JOptionPane.showMessageDialog(new JFrame(), "Cash Deposited \n Thank You for Banking with Us!");
-                        dispose();
-                        NavigationFrame navigationFrame = new NavigationFrame(card_no, con);
-                        navigationFrame.setVisible(true);
+                        if(depositSQL(amt)==true) {
+                        	JOptionPane.showMessageDialog(new JFrame(), "Cash Deposited \n Thank You for Banking with Us!");
+                        	dispose();
+                        	NavigationFrame navigationFrame = new NavigationFrame(card_no, con);
+                        	navigationFrame.setVisible(true);
+                        }
+                        else {
+                        	 JOptionPane.showMessageDialog(new JFrame(), "Deposit unsuccessfull");
+                        }
 
                     } else if (result == JOptionPane.NO_OPTION) {
                         label.setText("You selected: No");
